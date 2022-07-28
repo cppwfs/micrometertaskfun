@@ -1,0 +1,28 @@
+
+= Sample Task Application that demonstrates missing metrics from Prometheus.
+
+In this sample the user wants to view the `spring_cloud_task_seconds_sum` metric in prometheus.
+For some executions this value is not sent to the Prometheus instance, however this metric
+can be seen in the PrometheusMeterRegistry scrape when the `@AfterTask` has executed.
+The Scrape is printed at the end of execution just before the `pushAndClose()`.
+
+== Build
+
+[source,bash]
+----
+mvn clean package -DskipTests
+----
+
+== Launch the App
+
+[source,bash]
+----
+java -jar target/mtask-0.0.1-SNAPSHOT.jar --spring.cloud.task.name=<YourFavoriteTaskName>
+----
+
+== Launch the App 10 times.
+
+[source,bash]
+----
+java -jar target/mtask-0.0.1-SNAPSHOT.jar --spring.cloud.task.name=<YourFavoriteTaskName>
+----
